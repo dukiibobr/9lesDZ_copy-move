@@ -1,6 +1,14 @@
 #include "Point.h"
 
- void Point::print() const {
+ Point::Point()
+{
+	x = 0;
+	y = 0;
+}
+
+ Point::Point(int x1, int y1) :x(x1), y(y1) {}
+
+void Point::print() const {
 	cout << "x: " << x << endl;
 	cout << "y: " << y << endl;
 }
@@ -10,10 +18,9 @@
 	++y;
 
 	return *this;
-
 }
 
- inline Point& Point::operator--() {
+  Point& Point::operator--() {
 	 --x;
 	 --y;
 
@@ -21,15 +28,22 @@
  }
 
   bool Point::operator>(const Point& other) const {
-	 return ((this->x) > (other.x) && ((this->y) > (other.y)));
-
+	  return x + y > other.x + other.y;
  }
   bool Point::operator<(const Point& other) const {
-	  return ((this->x <other.x) && (this->y < other.y));
- }
+	  return x + y < other.x + other.y;
+  }
 
    Point Point::operator!()  {
 	  this->x *= -1;
 	  this->y *= -1;
 	  return *this;
   }
+
+    int Point::getX() const {
+	   return x;
+   }
+
+    int Point::getY() const {
+	   return y;
+   }
